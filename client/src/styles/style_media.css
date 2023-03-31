@@ -1,0 +1,16 @@
+@media screen and (max-width: 1060px) {
+    .main {
+        height: 3000px;
+        
+    }
+
+    .check{
+        position:absolute;
+        top:600px;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    
+    
+      
+    }
