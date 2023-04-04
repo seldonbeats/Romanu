@@ -40,6 +40,10 @@ const SongSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    comments: {
+      type: [{id : Number, content:String}],
+      required: true,
+    },
 
   },
   { timestamps: true }

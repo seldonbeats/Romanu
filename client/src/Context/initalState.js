@@ -7,6 +7,7 @@ export const initialState = {
   artistFilter: null,
   languageFilter: null,
   allUsers: null,
+  comments: [{id : 1, content:''}],
   allSongs: null,
   allAlbums: null,
   albumFilter: null,

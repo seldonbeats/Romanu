@@ -22,7 +22,7 @@ const SongDetails  = () => {
     const [product, setProduct] = useState([]);
     const [{ user }] = useStateValue();
     const [comment, setComment] = useState({
-        conent: ''
+        content: ''
     })
     const [setAlert, setSetAlert] = useState(null);
     const [alertMsg, setAlertMsg] = useState("");
@@ -37,6 +37,7 @@ const SongDetails  = () => {
         document.body.removeChild(element);
     };
     console.log(product);
+
     useEffect(() => {
         axios({
             url: `http://localhost:4000/api/songs/getOne/${productid}`,
@@ -157,19 +158,20 @@ return (
         offset: 1
     }
 }>
-    <h3 className="text-3xl text-gray-100">Comments </h3>
+      <h3>Comments ({product ? product.comments.length : 0})</h3>
 
-    {
-        product  => (
-            <Card className="mt-4 border-0">
-                <CardBody>
-                    <CardText>
+{
+    product && product.comments.map((c, index) => (
+        <Card className="mt-4 border-0" key={index}>
+            <CardBody>
+                <CardText>
+                    {c.content}
+                </CardText>
+            </CardBody>
+        </Card>
+    ))
+}
 
-                    </CardText>
-                </CardBody>
-            </Card>
-        )
-    }
 
     <Card className="mt-4 border-0" >
         <CardBody>
