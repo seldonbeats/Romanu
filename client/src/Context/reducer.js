@@ -13,11 +13,7 @@ export const actionType = {
   SET_SONG_PLAYING: "SET_SONG_PLAYING",
   SET_MINI_PLAYER: "SET_MINI_PLAYER",
   ADD_TO_CART: "ADD_TO_CART",
-  REMOVE_ITEM: "REMOVE_ITEM",
-  PRODUCT_CREATE_REVIEW_REQUEST: 'PRODUCT_CREATE_REVIEW_REQUEST',
-  PRODUCT_CREATE_REVIEW_SUCCESS : 'PRODUCT_CREATE_REVIEW_SUCCESS',
-  PRODUCT_CREATE_REVIEW_FAIL: 'PRODUCT_CREATE_REVIEW_FAIL',
-  PRODUCT_CREATE_REVIEW_RESET: 'PRODUCT_CREATE_REVIEW_RESET',
+  REMOVE_ITEM: "REMOVE_ITEM"
 };
 
 const reducer = (state, action) => {
@@ -117,18 +113,6 @@ const reducer = (state, action) => {
       return state;
   }
 };
-export const productReviewCreateReducer = (state = {}, action) => {
-  switch (action.type) {
-    case actionType.PRODUCT_CREATE_REVIEW_REQUEST:
-      return { loading: true }
-    case actionType.PRODUCT_CREATE_REVIEW_SUCCESS:
-      return { loading: false, success: true }
-    case actionType.PRODUCT_CREATE_REVIEW_FAIL:
-      return { loading: false, error: action.payload }
-    case actionType.PRODUCT_CREATE_REVIEW_RESET:
-      return {}
-    default:
-      return state
-  }
-}
+
+
 export default reducer;

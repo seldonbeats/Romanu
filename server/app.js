@@ -10,15 +10,15 @@ app.use(express.json());
 
 app.get("/", (req, res) => { return res.json("Hi...") });
 
-// user authentication routes
+
 const userRoute = require("./routes/auth");
 app.use("/api/users/", userRoute);
 
-// Artist links
+
 const artistsRoute = require("./routes/artist");
 app.use("/api/artists/", artistsRoute);
 
-// Album links
+
 const albumRoute = require("./routes/albums");
 app.use("/api/albums/", albumRoute);
 

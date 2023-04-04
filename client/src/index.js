@@ -4,7 +4,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { GlobalContextProvider } from "./Context/GlobalContext";
 import "./index.css";
 import App from "./App";
-import { Provider } from 'react-redux';
 import { StateProvider } from "./Context/StateProvider";
 import { initialState } from "./Context/initalState";
 import reducer from "./Context/reducer";
@@ -12,7 +11,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
-import store from './store';
+
 
 
  //Localisaton
@@ -40,11 +39,9 @@ ReactDOM.render(
     <Router>
     <GlobalContextProvider>
       <StateProvider initialState={initialState} reducer={reducer}>
-      <Provider store={store}>
-
+      
         <App />
-
-      </Provider>
+ 
       </StateProvider>
       </GlobalContextProvider>
     </Router>

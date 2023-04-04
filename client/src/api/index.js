@@ -2,11 +2,6 @@ import axios from "axios";
 
 const baseURL = "http://localhost:4000/";
 
-export const PRODUCT_CREATE_REVIEW_REQUEST = 'PRODUCT_CREATE_REVIEW_REQUEST'
-export const PRODUCT_CREATE_REVIEW_SUCCESS = 'PRODUCT_CREATE_REVIEW_SUCCESS'
-export const PRODUCT_CREATE_REVIEW_FAIL = 'PRODUCT_CREATE_REVIEW_FAIL'
-export const PRODUCT_CREATE_REVIEW_RESET = 'PRODUCT_CREATE_REVIEW_RESET'
-
 export const validateUser = async (token) => {
   try {
     const res = await axios.get(`${baseURL}api/users/login`, {
@@ -112,38 +107,6 @@ export const deleteSongById = async (id) => {
   }
 };
 
-export const createProductReview = (productId, review) => async (
-  dispatch,
-  getState
-) => {
-  try {
-    dispatch({
-      type: PRODUCT_CREATE_REVIEW_REQUEST,
-    })
-
-    const {
-      userLogin: { token },
-    } = getState()
-
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: "Bearer " + token,
-      },
-    }
-
-    await axios.post(`/api/products/${productId}/reviews`, review, config)
-
-    dispatch({
-      type: PRODUCT_CREATE_REVIEW_SUCCESS,
-    })
-  } catch (error) {
-    dispatch({
-      type: PRODUCT_CREATE_REVIEW_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
-  }
-}
+export const createComment = async (comment, productid) => {
+  return axios.post(`${baseURL}api/songs/getOne/${productid}/comments`, comment);
+};
